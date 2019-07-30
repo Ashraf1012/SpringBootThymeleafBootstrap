@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico"/>
+
+    <title>Spring Boot with ThymeLeaf and Bootstrap Demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/floating-labels.css}"/>
+</head>
+<body>
+<form class="form-signin" action="#" th:action="@{/}" th:object="${dateComparator}" method="post">
+
+    <div class="alert alert-danger alert-dismissible" role="alert" th:if="${#fields.hasErrors('*')}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+    </div>
+
+    <div class="alert alert-success alert-dismissible" role="alert" th:if="${successMessage}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <p th:text="${successMessage}"></p>
+    </div>
+
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Spring Boot App Demo</h1>
+        <p>Date Comparator</p>
+    </div>
+
+    <div class="form-label-group">
+        <input type="date" th:field="*{startDate}" class="form-control" placeholder="Start Date" required autofocus>
+        <label>Start Date</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="date" th:field="*{endDate}" class="form-control" placeholder="End Date" required>
+        <label>End Date</label>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Confirm</button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; ashrafmujawar10@gmail.com</p>
+</form>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
